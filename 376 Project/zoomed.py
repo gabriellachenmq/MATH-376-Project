@@ -2,20 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def zoomed_julia_set(c, x_min, x_max, y_min, y_max, zoom_width, zoom_height, max_iter):
-    """
-    Generate a high-resolution Julia set for a zoomed-in region.
 
-    Args:
-        c: Complex parameter for the Julia set.
-        x_min, x_max, y_min, y_max: The bounds of the zoomed region.
-        zoom_width: Number of points in the x direction (increased resolution).
-        zoom_height: Number of points in the y direction (increased resolution).
-        max_iter: Maximum number of iterations for divergence testing.
-
-    Returns:
-        A high-resolution Julia set image for the zoomed-in region.
-    """
-    # Create a high-resolution grid
+    # High-resolution grid
     x = np.linspace(x_min, x_max, zoom_width)
     y = np.linspace(y_min, y_max, zoom_height)
     X, Y = np.meshgrid(x, y)
@@ -45,12 +33,11 @@ def plot_zoomed_julia(c, x_min, x_max, y_min, y_max, zoom_width, zoom_height, ma
     plt.ylabel("Im(z)")
     plt.show()
 
-# Example: Zooming into a small region of the Julia set
-c = complex(-0.8,0.156)  # The same parameter as before
-x_min, x_max = -0.07, 0  # Zoomed region bounds
-y_min, y_max = -0.5, -0.48    # Zoomed region bounds
+c = complex(-0.8,0.156)  
+x_min, x_max = -0.07, 0 
+y_min, y_max = -0.5, -0.48
 zoom_width, zoom_height = 2000, 2000  # Increased resolution
-max_iter = 512  # High iteration count for detail
+max_iter = 512  # High iteration
 
 # Plot the zoomed Julia set
 plot_zoomed_julia(c, x_min, x_max, y_min, y_max, zoom_width, zoom_height, max_iter)
