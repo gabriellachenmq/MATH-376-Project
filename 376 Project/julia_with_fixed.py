@@ -52,24 +52,25 @@ def plot_julia_with_fixed_points(c, width, height, x_min, x_max, y_min, y_max, m
     
     # Plot the Julia set
     plt.figure(figsize=(8, 8))
-    plt.imshow(np.fliplr(julia), extent=[x_min, x_max, y_min, y_max], cmap='inferno')
-    plt.colorbar(label="Number of iterations")
+    plt.imshow(np.fliplr(julia), extent=[x_min, x_max, y_min, y_max], cmap='Purples')
+    cbar = plt.colorbar(label="Number of Iterations")
+    cbar.ax.yaxis.label.set_size(16)
     
     # Overlay fixed points
-    plt.scatter([fixed1.real], [fixed1.imag], color='white', label=f'Fixed Point 1 |2z|={stability1:.2f}')
+    plt.scatter([fixed1.real], [fixed1.imag], color='lime', label=f'Fixed Point 1 |2z|={stability1:.2f}')
     plt.scatter([fixed2.real], [fixed2.imag], color='cyan', label=f'Fixed Point 2 |2z|={stability2:.2f}')
     
     # Annotate stability of fixed points
-    plt.annotate(f'|2z|={stability1:.2f}', (fixed1.real, fixed1.imag), color='white', fontsize=12)
+    plt.annotate(f'|2z|={stability1:.2f}', (fixed1.real, fixed1.imag), color='lime', fontsize=12)
     plt.annotate(f'|2z|={stability2:.2f}', (fixed2.real, fixed2.imag), color='cyan', fontsize=12)
     
-    plt.title(f"Julia Set with Fixed Points for c = {c.real} + {c.imag}i")
-    plt.xlabel("Re(z)")
-    plt.ylabel("Im(z)")
+    plt.title(f"Julia Set with Fixed Points for c = {c.real} + {c.imag}i", fontsize=16)
+    plt.xlabel("Re(z)", fontsize=16)
+    plt.ylabel("Im(z)", fontsize=16)
     plt.legend(loc="upper right")
     
     plt.show()
 
 # Visualize
-c = complex(0.5,-0.25)
+c = complex(-0.7,0.27015)
 plot_julia_with_fixed_points(c, width, height, x_min, x_max, y_min, y_max, max_iter)
